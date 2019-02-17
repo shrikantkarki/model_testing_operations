@@ -1,0 +1,18 @@
+<h1> Listing all the users </h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>email</th>
+    </tr>
+
+    <%- @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.username, new_article_path(user_id: user.id) %></td>
+      <td><%= user.email %></td>
+      </tr>
+
+
+    <%- end %>
+
+  </table>
