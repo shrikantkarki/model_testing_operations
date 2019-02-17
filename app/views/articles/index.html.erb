@@ -4,23 +4,28 @@
 <h1> Listing all the articles </h1>
 
 <table>
-  <tr>
-    <th>Title</th>
-    <th>description</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>description</th>
+    </tr>
+  </thead>
 
 
 
+<tbody>
+  <%- @articles.each do |article| %>
+    <tr>
+      <td><%= link_to article.title, article_path(article.id) %></td>
+      <td><%= article.description %></td>
+      <td><%= link_to 'Edit',edit_article_path(article) %></td>
+      <td><%= link_to('Delete',article_path(article), method: :delete, data: {confirm: "Are you sure?"})%></td>
 
-<%- @articles.each do |article| %>
-  <tr>
-    <td><%= link_to article.title, article_path(article.id) %></td>
-    <td><%= article.description %></td>
-    <td><%= link_to 'Edit',edit_article_path(article) %></td>
-    <td><%= link_to 'Delete',article_path(article), method: :delete, data: {confirm: "Are you sure?"} %></td>
+    </tr>
 
-  </tr>
+  <%- end %>
+</tbody>
 
-<%- end %>
+
 
 </table>
