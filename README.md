@@ -2,7 +2,7 @@ Hi,I have developed a rails web application called 'model_testing'.
 
 Following are some special features of my application.
 
-  ->My application runs through two table in a database which are articles and users.
+  ->My application runs through two tables in a database which are articles and users.
   ->Article table contains three attributes which are title,discription and user_id.
   ->User table contains two attributes which are username and emaild.
   ->There is an one to many association between the User and the Article,which means one user can write many articles but one article belongs to only one user.
@@ -32,7 +32,7 @@ How did I design this application:Following are the steps that I followed to des
              * "rails generate migration create_articles title:string description:text",which genarates information about the articles table.
 
 
-        -> Similarly for creating the users database,the following commands were used.
+        -> Similarly for creating the users database,the following command is used.
              * "rails genarate migration create_users username:string email:string",which generates information about the users table.
 
 
