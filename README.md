@@ -1,19 +1,13 @@
 Hi,I have developed a rails web application called 'model_testing'.
 
-Following are some special features of my application.
+My app model_testing has the following Constraints defined
 
-  ->My application runs through two tables in a database which are articles and users.
-  ->Article table contains three attributes which are title,discription and user_id.
-  ->User table contains two attributes which are username and emaild.
-  ->There is an one to many association between the User and the Article,which means one user can write many articles but one article belongs to only one user.
-  ->There are user interfaces for creating articles and users.
-  ->There are some constarints imposed on the schema of the two  tables.
-      1) Constarints on the artices table.
+      1) Constarints on the Artice table.
           * The title should not be less than two characters.
           * The description should not be less that five characters.
           * The user_id should always be present.
 
-      2) Constraints on the user table.
+      2) Constraints on the User table.
           * The username should be unique regardless of the cases.
           * The email should be according to the following regular expression.'/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i'.
   ->I pushed my application to github and heroku.
@@ -22,18 +16,41 @@ Following are some special features of my application.
 How did I design this application:Following are the steps that I followed to design my application.
     1)Ruby version:My ruby version is 2.5.1
 
+    2)Rails version:My rails version is 5.2.2
 
-    2)configuration:Configuratoion is about the database.yml file.Here we have to be careful about the adapter in this file.
+    3)bundle install:Whenever you include a new gem inside your Gemfile,you have to excute the "bundle install" command.It will install the specified gems.
+
+    4)rails server: You can check the working of your application by running your rails server.The command for running the rails server is "rails s".
+
+
+    2)configuration:Database Config is defined in /config/database.yml file. I have used sqlite3 adapter.But you can use any adaptors like mysql and postgres.
+        -> When you use postgres as the adopter,remove sqlite3 from the Gemfile and add postgres in the production method as following.
+           group : production do
+              gem 'pg'
+           end
+
 
 
 
     3)Database creation:In my application,there are two tables.
+        ->My application has two tables Article and User.
+        ->There is an one to many association between the Article and the User,which means one user can write many articles and one article belongs to only one user.
         -> For creating the articles table, I executed the following command.
              * "rails generate migration create_articles title:string description:text",which genarates information about the articles table.
 
 
         -> Similarly for creating the users database,the following command is used.
              * "rails genarate migration create_users username:string email:string",which generates information about the users table.
+        ->One to many association can be established as following.
+             * "has_many :articles" in the User model.
+             * "belongs_to :user" in the Article model.
+        ->Once you create a model of your table,rails provides you the getters and setters of the attributes.
+        ->You can use rails console for inserting data into the tables as following.Let us say that i want to insert some data into Article table.For that,I have to do
+              * rails console
+              * Article.create(title:"my_article",description:"This is my first article")
+        ->Similarly,you can edit and delete the data by using rails console. 
+
+
 
 
     4)Database initialization:
@@ -53,8 +70,8 @@ How did I design this application:Following are the steps that I followed to des
              * Generate the ssh key by the following command."cat ~/.ssh/id_rsa.pub"
              * Copy the generated ssh key and paste it in your profile's ssh key field.
              * create a new repository.
-             * copy and paste the url of the  new repository into the command line.
-             * push the applicaion to github by using "git push".
+             * copy and paste the url of the  new repository which will be like   "git remote add origin git@github.com:{github_repository}",into the command line.
+             * push the applicaion to github by using "git push origin master".Here 'origin' is the name of my repository and 'master' is the branch.
 
         ->Instructions for pushing your application to heroku.
              * Set up a heroku account.
