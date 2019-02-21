@@ -20,6 +20,11 @@
       <td><%= article.description %></td>
       <td><%= link_to 'Edit',edit_article_path(article) %></td>
       <td><%= link_to('Delete',article_path(article), method: :delete, data: {confirm: "Are you sure?"})%></td>
+       <button type="button" name="button" id='my-btn' data-title="<%=article.title%>" >get_title</button>
+       <button type="button" name="button" id='my-b' data-description="<%=article.description%>" >get_desc</button>
+
+
+
     </tr>
 
   <%- end %>
@@ -28,3 +33,22 @@
 
 
 </table>
+
+
+
+<script>
+  document.getElementById('my-btn').addEventListener("click", myFunction);
+  function myFunction() {
+    var btn = document.getElementById('my-btn');
+    var title = btn.getAttribute('data-title');
+    alert(title);
+  }
+
+  document.getElementById('my-b').addEventListener("click",get_it);
+  function get_it(){
+    var bt=document.getElementById('my-b');
+    var titl=bt.getAttribute('data-description');
+    alert(titl);
+  }
+
+</script>
